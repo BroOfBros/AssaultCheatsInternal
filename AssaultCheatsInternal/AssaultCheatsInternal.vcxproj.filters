@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Memory">
+      <UniqueIdentifier>{daada89e-016b-4143-9353-1b298e53ba9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hooks">
+      <UniqueIdentifier>{8f6ccbc4-5bf4-41b9-ac04-690c1a876a95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{ebc60163-373a-4d1a-a466-057161b035d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Game">
+      <UniqueIdentifier>{b000c574-33b6-48ac-83d2-3f04247bd7d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Game\Text">
+      <UniqueIdentifier>{35f18529-8d10-4245-aac6-1da1e822b3b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Game\OpenGL">
+      <UniqueIdentifier>{c2d4a1fc-783a-46f6-815c-e428734af6db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Game\Mechanics">
+      <UniqueIdentifier>{965aa8c4-de44-4a64-9fd4-3c1bf4e4765a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Memory.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Hook.h">
+      <Filter>Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Main\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="IngameText.h">
+      <Filter>Main\Game\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="SwapBuffers.h">
+      <Filter>Main\Game\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Aim.h">
+      <Filter>Main\Game\Mechanics</Filter>
+    </ClInclude>
+    <ClInclude Include="Triggerbot.h">
+      <Filter>Main\Game\Mechanics</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Memory.cpp">
+      <Filter>Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="Hook.cpp">
+      <Filter>Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Main\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Triggerbot.cpp">
+      <Filter>Main\Game\Mechanics</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
