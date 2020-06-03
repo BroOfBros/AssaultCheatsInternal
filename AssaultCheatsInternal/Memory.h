@@ -1,4 +1,4 @@
-// An internal memory library
+// An internal memory library.
 
 #pragma once
 

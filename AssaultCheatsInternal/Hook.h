@@ -6,8 +6,19 @@
 
 class Hook {
 public:
+	/**
+	 * Specify the source address, the destination address and the number of bytes
+	 * to steal.
+	 */
 	Hook(DWORD src, DWORD dest, SIZE_T len);
+
+	/**
+	 * Use this when hooking into a library function.
+	 * EG: hooking OpenGL functions, DirectX, etc.
+	 * Usage: Hook("opengl32.dll", "wglSwapBuffers", 0xDEADBEEF, 5);
+	 */
 	Hook(const WCHAR* moduleName, const CHAR* funcName, DWORD dest, SIZE_T len);
+
 	~Hook();
 
 	/**
@@ -31,6 +42,8 @@ public:
 
 	/**
 	 * Disable hook.
+	 * On disable, the stolen bytes will be returned to their source and virtual
+	 * allocated memory will be freed.
 	 */
 	void disable();
 
