@@ -143,18 +143,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Aim.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="Hook.h" />
-    <ClInclude Include="IngameText.h" />
-    <ClInclude Include="Memory.h" />
+    <ClInclude Include="Entity.hpp" />
+    <ClInclude Include="Game.hpp" />
+    <ClInclude Include="Hook.hpp" />
+    <ClInclude Include="Memory.hpp" />
+    <ClInclude Include="Offsets.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="SwapBuffers.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="Triggerbot.h" />
+    <ClInclude Include="Triggerbot.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Hook.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Memory.cpp" />

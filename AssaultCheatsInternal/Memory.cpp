@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "Memory.h"
+#include "Memory.hpp"
 
 MODULEINFO Memory::getModule(const WCHAR* name) {
 	HANDLE proc = GetCurrentProcess();

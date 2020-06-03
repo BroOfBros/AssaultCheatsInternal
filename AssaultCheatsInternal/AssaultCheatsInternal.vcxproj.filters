@@ -8,52 +8,43 @@
     <Filter Include="Memory">
       <UniqueIdentifier>{daada89e-016b-4143-9353-1b298e53ba9d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Hooks">
+    <Filter Include="Memory\Hooks">
       <UniqueIdentifier>{8f6ccbc4-5bf4-41b9-ac04-690c1a876a95}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main">
-      <UniqueIdentifier>{ebc60163-373a-4d1a-a466-057161b035d9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\Game">
+    <Filter Include="Game">
       <UniqueIdentifier>{b000c574-33b6-48ac-83d2-3f04247bd7d0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main\Game\Text">
-      <UniqueIdentifier>{35f18529-8d10-4245-aac6-1da1e822b3b7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\Game\OpenGL">
-      <UniqueIdentifier>{c2d4a1fc-783a-46f6-815c-e428734af6db}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Main\Game\Mechanics">
+    <Filter Include="Game\Hacks">
       <UniqueIdentifier>{965aa8c4-de44-4a64-9fd4-3c1bf4e4765a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity">
+      <UniqueIdentifier>{4fb1b12f-f993-4af6-a10e-ceef10f0c940}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Memory.h">
-      <Filter>Memory</Filter>
-    </ClInclude>
-    <ClInclude Include="Hook.h">
-      <Filter>Hooks</Filter>
-    </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Main\Game</Filter>
+    <ClInclude Include="Offsets.h">
+      <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="IngameText.h">
-      <Filter>Main\Game\Text</Filter>
+    <ClInclude Include="Entity.hpp">
+      <Filter>Game\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="SwapBuffers.h">
-      <Filter>Main\Game\OpenGL</Filter>
+    <ClInclude Include="Game.hpp">
+      <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Aim.h">
-      <Filter>Main\Game\Mechanics</Filter>
+    <ClInclude Include="Triggerbot.hpp">
+      <Filter>Game\Hacks</Filter>
     </ClInclude>
-    <ClInclude Include="Triggerbot.h">
-      <Filter>Main\Game\Mechanics</Filter>
+    <ClInclude Include="Hook.hpp">
+      <Filter>Memory\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory.hpp">
+      <Filter>Memory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -61,19 +52,20 @@
       <Filter>Memory</Filter>
     </ClCompile>
     <ClCompile Include="Hook.cpp">
-      <Filter>Hooks</Filter>
-    </ClCompile>
-    <ClCompile Include="dllmain.cpp">
-      <Filter>Main</Filter>
+      <Filter>Memory\Hooks</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
-      <Filter>Main\Game</Filter>
+      <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Triggerbot.cpp">
-      <Filter>Main\Game\Mechanics</Filter>
+      <Filter>Game\Hacks</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Game\Entity</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

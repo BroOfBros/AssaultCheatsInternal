@@ -1,53 +1,59 @@
 #include "stdafx.h"
-#include "Game.h"
+#include "Game.hpp"
 
-Game::Game(HMODULE module, FILE* console, Hook* hook) {
-	// Init state
-	this->module = module;
-	this->console = console;
-	this->hook = hook;
-	oWglSwapBuffers = (tWglSwapBuffers)hook->enable();
+Game::Game(DWORD hWglSwapBuffers) {
+	hook = new Hook(L"opengl32.dll", "wglSwapBuffers", (DWORD)hWglSwapBuffers, 5);
+	offsets.oWglSwapBuffers = oWglSwapBuffers = (tWglSwapBuffers)hook->enable();
 
-	// Get offsets
-	offsets = new Offsets();
-	initOffsets();
-
-	// Init hacks
-	hacks = new Hacks();
-	hacks->trigger = new Triggerbot(offsets->playersList, offsets->playersCount, offsets->inCross);
+	init();
 }
 
 Game::~Game() {
+	offsets.printTop("%sUnhooking...", red);
+
 	if (hook->isEnabled()) {
 		hook->disable();
 	}
 
-	delete offsets;
-	delete hacks;
-	fclose(console);
-	FreeConsole();
+	delete hook;
 
-	Sleep(100);
-	FreeLibraryAndExitThread(module, 0);
+	// Free hacks
+	delete triggerBot;
+
+	// Free other
+	delete player;
 }
 
-void Game::initOffsets() {
-	offsets->moduleAddr = (DWORD)Memory::getModule(NULL).lpBaseOfDll;
+void Game::init() {
+	// Offsets
+	offsets.printTop = (tPrintTop)0x0046B060;
+	offsets.getEntInCross = (tInCross)0x004607C0;
 
-	offsets->player = offsets->moduleAddr + 0x10F4F4;
-	offsets->playersCount = offsets->moduleAddr + 0x10F500;
-	offsets->playersList = offsets->moduleAddr + 0x10F4F8;
+	offsets.mod = (DWORD)Memory::getModule(NULL).lpBaseOfDll;
+	offsets.player = offsets.mod + 0x10F4F4;
+	offsets.entCount = offsets.mod + 0x10F500;
+	offsets.entList = offsets.mod + 0x10F4F8;
 
-	offsets->printTop = (tPrintTop)tPrintTopAddr;
-	offsets->inCross = (tInCross)tInCrossAddr;
+	// Hacks
+	triggerBot = new Triggerbot(&offsets);
 
-	printTop = offsets->printTop;
-}
-
-Hacks* Game::getHacks() {
-	return hacks;
+	// Others
+	player = new Entity(offsets.player);
 }
 
 void Game::update() {
-	hacks->trigger->execute();
+	if (options.triggerBot) {
+		triggerBot->execute();
+	}
+}
+
+void Game::toggleTriggerBot() {
+	options.triggerBot = !options.triggerBot;
+
+	if (options.triggerBot) {
+		offsets.printTop("Triggerbot %senabled!", green);
+	}
+	else {
+		offsets.printTop("Triggerbot %sdisabled!", red);
+	}
 }

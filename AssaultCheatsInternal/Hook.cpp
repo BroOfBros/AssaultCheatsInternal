@@ -1,6 +1,5 @@
 #include "stdafx.h"
-#include "Hook.h"
-#include "Memory.h"
+#include "Hook.hpp"
 
 Hook::Hook(DWORD src, DWORD dest, SIZE_T len) {
 	this->src = src;
@@ -82,7 +81,7 @@ void Hook::disable() {
 	Memory::write(src, originalBytes, len);
 
 	enabled = FALSE;
-	delete originalBytes;
+	delete[] originalBytes;
 	VirtualFree((LPVOID)gateway, 0, MEM_RELEASE);
 }
 
