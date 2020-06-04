@@ -1,20 +1,35 @@
 #include "stdafx.h"
 #include "Triggerbot.hpp"
+#include "Entity.hpp"
+#include "Player.hpp"
 
 Triggerbot::Triggerbot(Offsets* offsets) {
 	this->offsets = offsets;
+	enabled = FALSE;
+}
+
+void Triggerbot::toggle() {
+	enabled = !enabled;
+}
+
+BOOL Triggerbot::isEnabled() {
+	return enabled;
 }
 
 void Triggerbot::execute() {
-	int n = *(DWORD*)offsets->entCount;
-	DWORD entList = offsets->entList;
+	Player* player = new Player(offsets->player);
+	DWORD targetBase = offsets->getEntInCross();
 
-	for (int i = 0; i < n; i++) {
-		DWORD entity = Memory::resolveAddr(entList, { 4UL * i });
+	if (targetBase) {
+		Entity* target = new Entity((DWORD)&targetBase);
+		printf("%s: %d\n", target->getName(), target->getHealth());
+		player->shoot(target->getTeam() != player->getTeam());
 
-		if (*(DWORD*)entity && offsets->getEntInCross() == *(DWORD*)entity) {
-			char* name = (char*)(DWORD*)Memory::resolveAddr(entity, { 0x225 });
-			printf("0x%.8X : %s\n", entity, name);
-		}
+		delete target;
 	}
+	else {
+		player->shoot(FALSE);
+	}
+
+	delete player;
 }

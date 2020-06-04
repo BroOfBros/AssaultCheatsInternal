@@ -13,8 +13,8 @@
 #include "Entity.hpp"
 
 typedef struct {
-	BOOL triggerBot;
-} Options;
+	Triggerbot* triggerBot;
+} Hacks;
 
 class Game {
 public:
@@ -33,9 +33,8 @@ private:
 	Hook* hook;
 	Offsets offsets;
 
-	// Options and hacks
-	Options options;
-	Triggerbot* triggerBot;
+	// Hacks
+	Hacks hacks;
 
 	// Other
 	Entity* player;

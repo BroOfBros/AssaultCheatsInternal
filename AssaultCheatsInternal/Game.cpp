@@ -18,7 +18,7 @@ Game::~Game() {
 	delete hook;
 
 	// Free hacks
-	delete triggerBot;
+	delete hacks.triggerBot;
 
 	// Free other
 	delete player;
@@ -35,22 +35,22 @@ void Game::init() {
 	offsets.entList = offsets.mod + 0x10F4F8;
 
 	// Hacks
-	triggerBot = new Triggerbot(&offsets);
+	hacks.triggerBot = new Triggerbot(&offsets);
 
 	// Others
 	player = new Entity(offsets.player);
 }
 
 void Game::update() {
-	if (options.triggerBot) {
-		triggerBot->execute();
+	if (hacks.triggerBot->isEnabled()) {
+		hacks.triggerBot->execute();
 	}
 }
 
 void Game::toggleTriggerBot() {
-	options.triggerBot = !options.triggerBot;
+	hacks.triggerBot->toggle();
 
-	if (options.triggerBot) {
+	if (hacks.triggerBot->isEnabled()) {
 		offsets.printTop("Triggerbot %senabled!", green);
 	}
 	else {
